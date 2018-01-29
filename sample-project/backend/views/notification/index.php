@@ -56,7 +56,8 @@ $(document).ready(function () {
             data: form.serialize(),
             success: function (resp) {
                 socket.emit(resp.channel, resp);
-                // window.location.href = resp.reloadLink;
+              // console.log("index php" + resp.channel + "::"+resp.type);
+                window.location.href = resp.reloadLink;
             }
         });
     }

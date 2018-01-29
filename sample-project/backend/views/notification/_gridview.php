@@ -68,8 +68,9 @@ $(".refreshNotificationBtn").click(function() {
         type: 'post',
         data: {id: id},
         success: function (resp) {
-            socket.emit('notification', resp);
-            window.location.href = resp.reloadLink;
+          console.log("grid view php" + resp.channel);
+          socket.emit('notification', resp);
+            // window.location.href = resp.reloadLink;
         }
     });
 });
