@@ -55,8 +55,9 @@ $(document).ready(function () {
             type: 'post',
             data: form.serialize(),
             success: function (resp) {
+              console.log("Update php" + resp.channel);
                 socket.emit('notification', resp);
-                window.location.href = resp.reloadLink;
+                // window.location.href = resp.reloadLink;
             }
         });
     }

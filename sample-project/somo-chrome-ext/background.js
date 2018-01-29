@@ -111,7 +111,7 @@ if (!localStorage.isInitialized) {
 if (window.Notification) {
     localStorage.firstRun = true;
     var socket = io.connect(io_connect);
-    socket.on('notification', function (data) {
+    socket.on('accounting', function (data) {
         if(data.type == 'pushed') {
             localStorage.time = data.time;
             localStorage.title = data.title;

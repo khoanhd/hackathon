@@ -11,8 +11,16 @@ server.listen(PORT, HOSTNAME, function () {
 });
 
 io.on('connection', function(socket) {
-    socket.on('notification', function(data){
+    socket.on('it-software', function(data){
         console.log(data);
-        io.emit('notification', data);
+        io.emit('it-software', data);
     });
+  socket.on('accounting', function(data){
+    console.log(data);
+    io.emit('accounting', data);
+  });
+  socket.on('banking', function(data){
+    console.log(data);
+    io.emit('banking', data);
+  });
 });
