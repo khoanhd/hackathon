@@ -62,6 +62,11 @@ function showDefault() {
                         body = notify_data['message'];
                     }
                     mess = notify_data['title'];
+                    if(notify_data['url'] != '') {
+                        notification.onclick = function () {
+                            window.open(notify_data['url']);
+                        };
+                    }
                     var notification = new Notification(mess, {
                         icon: '64.png',
                         body: body
