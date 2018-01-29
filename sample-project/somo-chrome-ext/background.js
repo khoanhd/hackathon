@@ -37,9 +37,9 @@ function showPushed() {
     chrome.notifications.create("", {
         type:    "basic",
         iconUrl: "64.png",
-        title:   "REMINDER",
-        message: "It's time to go to this super-cool site !\nProceed ?",
-        contextMessage: "It's about time...",
+        title:   mess,
+        message: body,
+        contextMessage: body,
         buttons: [{
             title: "Apply"
         }]
@@ -82,9 +82,9 @@ function showDefault() {
                     chrome.notifications.create("", {
                         type:    "basic",
                         iconUrl: "64.png",
-                        title:   "REMINDER",
-                        message: "It's time to go to this super-cool site !\nProceed ?",
-                        contextMessage: "It's about time...",
+                        title:   mess,
+                        message: body,
+                        contextMessage: body,
                         buttons: [{
                             title: "Apply"
                         }]
@@ -119,9 +119,9 @@ function showDefault() {
                     chrome.notifications.create("", {
                         type:    "basic",
                         iconUrl: "64.png",
-                        title:   "REMINDER",
-                        message: "It's time to go to this super-cool site !\nProceed ?",
-                        contextMessage: "It's about time...",
+                        title:   mess,
+                        message: body,
+                        contextMessage: body,
                         buttons: [{
                             title: "Apply"
                         }]
