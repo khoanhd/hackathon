@@ -3,12 +3,12 @@
 /******************/
 var secret = 'dc9b9efd3e02d2e6e2800fb2b61421f7';
 // Production config
-var domain = 'http://0103a17e.ngrok.io/';
-var io_connect = 'http://8369f9cc.ngrok.io';
+// var domain = 'http://0103a17e.ngrok.io/';
+// var io_connect = 'http://8369f9cc.ngrok.io';
 
 // Development config
-// var domain = 'http://chrome-ext-notification.dev/';
-// var io_connect = 'http://127.0.0.1:8890';
+var domain = 'http://127.0.0.1/';
+var io_connect = 'http://127.0.0.1:3000';
 
 /**************************************/
 //*Function showPushed or showDefault*//
@@ -107,11 +107,16 @@ function showDefault() {
 if (!localStorage.isInitialized) {
     localStorage.isInitialized = true; // The option initialization.
 }
+if (!localStorage.channelCode) {
+    localStorage.channelCode = '';
+}
 // Test for notification support.
 if (window.Notification) {
     localStorage.firstRun = true;
+    var channelCode = localStorage.channelCode;
+    console.log(channelCode);
     var socket = io.connect(io_connect);
-    socket.on('notification', function (data) {
+    socket.on(channelCode, function (data) {
         if(data.type == 'pushed') {
             localStorage.time = data.time;
             localStorage.title = data.title;

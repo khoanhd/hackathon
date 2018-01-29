@@ -9,8 +9,11 @@
     "http://*/*",
     "https://*/*"
   ],
+
   "browser_action" : {
-    "default_icon": "64.png"
+    "default_icon": "64.png",
+    "default_title": "Get job alert",
+    "default_popup": "popup.html"
   },
   "background": { "scripts": ["jquery-3.1.1.min.js", "socketio.js", "background.js"] },
   "manifest_version": 2,
