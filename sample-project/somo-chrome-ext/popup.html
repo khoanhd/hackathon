@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Set Page Color Popup</title>
+    <style type=“text/css”>
+       html { width:400px; height:600px; }
+       body { height: 580px; }
+   </style>
+<link rel=“stylesheet” type=“text/css” href=“http://www.vietnamworks.com/css/jobseekers/bootstrap.css?version=5“>
+<link rel=“stylesheet” type=“text/css” href=“http://www.vietnamworks.com/css/jobseekers/theme.css?version=5”>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <label> Please choose the category for job alert</label>
+    <label style="color:red;display:none;" id="notifySaved"> You have already have saved category, change it if you want</label>
+    <select id="cateSelect">
+      <option value="it-software">IT Software</option>
+      <option value="accounting">Accounting</option>
+      <option value="banking">Banking</option>
+    </select>
+    <button id="chooseCateBtn">Save</button>
+  </body>
+</html>
