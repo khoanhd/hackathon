@@ -16,7 +16,7 @@ use yii\helpers\Html;
 
         <?= $form->field($model, 'title')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
-        <?= $form->field($model, 'message')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
+        <?= $form->field($model, 'message')->textarea([ 'rows' => 20, 'autofocus' => true]) ?>
 
       <select name="category" id="category">
         <option value="it-software" selected="selected">IT Software</option>
