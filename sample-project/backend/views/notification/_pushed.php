@@ -18,8 +18,13 @@ use yii\helpers\Html;
 
         <?= $form->field($model, 'message')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
-        <?= $form->field($model, 'url')->textInput() ?>
+      <select name="category" id="category">
+        <option value="it-software" selected="selected">IT Software</option>
+        <option value="accounting">Accounting</option>
+        <option value="banking">Banking</option>
+      </select>
 
+        <?= $form->field($model, 'url')->textInput() ?>
         <div class="checkbox">
             <label style="font-weight: bold;">
                 <?= \yii\bootstrap\Html::checkbox('instant', 0, ['id' => 'instantPushed']) ?> Instant Pushed

@@ -109,7 +109,8 @@ class NotificationController extends Controller
             if($tab == 'pushed') {
                 return [
                     'type' => $tab, 'time' => $model->time, 'title' => $model->title, 'message' => $model->message,
-                    'url' => $model->url, 'reloadLink' => Url::to(['index', 'tab' => $tab])
+                    'url' => $model->url, 'reloadLink' => Url::to(['index', 'tab' => $tab]),
+                    'channel' => $req->post('category')
                 ];
             } else {
                 return [
