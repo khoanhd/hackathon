@@ -45,7 +45,7 @@ class Notification extends \yii\db\ActiveRecord
             [['time', 'created_at', 'updated_at'], 'safe'],
             [['status', 'created_by', 'updated_by'], 'integer'],
             [['url'], 'string'],
-            [['message', 'title'], 'string', 'max' => 255],
+            [['message', 'title'], 'string'],
             ['time', 'match', 'pattern' => '/([0-1][0-9]|2[0-3])(:[0-5][0-9])/'],
             [['time'], 'string', 'max' => 5],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],

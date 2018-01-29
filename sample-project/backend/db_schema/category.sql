@@ -16,3 +16,5 @@ INSERT INTO `yii2-realtime`.category (id,name,`channel-code`) VALUES
 
 
 ALTER TABLE `yii2-realtime`.notification ADD category_id INT NULL ;
+
+ALTER TABLE `yii2-realtime`.notification MODIFY COLUMN message TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
