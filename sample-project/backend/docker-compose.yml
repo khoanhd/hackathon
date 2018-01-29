@@ -1,0 +1,84 @@
+#using for local dev
+version: "3"
+networks:
+  navigate_net:
+    driver: bridge
+
+services:
+  mysql:
+    image: mysql:5.6
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mount/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: navigate
+      MYSQL_PASSWORD: navigate
+      MYSQL_DATABASE: message
+    networks:
+      - navigate_net
+
+  navigate:
+#    build: ./navigate
+    image: navigate_img
+    container_name: navigate
+    ports:
+#      - "80:80"
+      - "443:443"
+#      - "443"
+    depends_on:
+      - redis
+      - mssql
+    networks:
+      - navigate_net
+    volumes:
+      - "../navigate:/var/www/html"
+
+  navigate_test:
+    image: navigate_img
+    container_name: navigate_test
+    ports:
+      - "80"
+      - "443"
+#      - "443:443"
+    depends_on:
+      - redis
+      - mssql
+    networks:
+      - navigate_net
+    volumes:
+      - "../navigate:/var/www/html"
+    environment:
+      - ENV=testing
+
+  automation-test:
+    image: navigate_img
+    container_name: automation-test
+    ports:
+      - "8080:80"
+    depends_on:
+      - redis
+      - mssql
+      - navigate_test
+      - selenium
+    networks:
+      - navigate_net
+    volumes:
+      - "../automation-test:/var/www/html"
+
+  selenium:
+    image: selenium/standalone-chrome-debug:latest
+    container_name: selenium
+    ports:
+      - "4444:4444"
+      - "5900:5900"
+    depends_on:
+      - navigate_test
+    networks:
+      - navigate_net
+
+volumes:
+  mssql:
+    driver: local

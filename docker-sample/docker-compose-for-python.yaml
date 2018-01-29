@@ -1,0 +1,31 @@
+version: '2'
+services:
+
+  python:
+    image: 3.6.4
+    restart: always
+    ports:
+     - "8000:8000"
+    # extra_hosts:
+    #  - "tileshop.local:127.0.0.1"
+    #  - "base-php.local:127.0.0.1"
+    #  - "phamllc.local:127.0.0.1"
+    #  - "lynhaky.local:127.0.0.1"
+    #  - "chrome-ext-notification.local:127.0.0.1"
+    volumes:
+     - .:/usr/src/app
+    depends_on:
+     - mysql
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "6603:3306"
+    volumes:    
+        # - ../sample-project/ly_nha_ky_new_site/ly_nha_ky_20180115.sql:/docker-entrypoint-initdb.d/ly_nha_ky.sql
+        - /var/lib/mysql  
+    environment:
+        - MYSQL_DATABASE=ly_nha_ky
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_USER=root
