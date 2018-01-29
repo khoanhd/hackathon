@@ -3,12 +3,12 @@
 /******************/
 var secret = 'dc9b9efd3e02d2e6e2800fb2b61421f7';
 // Production config
-// var domain = 'http://0103a17e.ngrok.io/';
-// var io_connect = 'http://8369f9cc.ngrok.io';
+var domain = 'http://0103a17e.ngrok.io/';
+var io_connect = 'http://8369f9cc.ngrok.io';
 
 // Development config
-var domain = 'http://127.0.0.1/';
-var io_connect = 'http://127.0.0.1:3000';
+// var domain = 'http://127.0.0.1/';
+// var io_connect = 'http://127.0.0.1:3000';
 
 /**************************************/
 //*Function showPushed or showDefault*//
