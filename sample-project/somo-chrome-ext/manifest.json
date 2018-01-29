@@ -3,7 +3,7 @@
   "version": "1.1",
   "description":
     "Shows off desktop notifications, which are new job notification",
-  "icons": {"16": "16.png", "48": "48.png", "64": "64.png"},
+  "icons": {"16": "64.png", "48": "64.png", "64": "64.png"},
   "permissions": [
     "notifications",
     "http://*/*",
@@ -19,7 +19,7 @@
   "manifest_version": 2,
 
   "web_accessible_resources": [
-    "48.png",
+    "64.png",
     "64.png"
   ]
 }

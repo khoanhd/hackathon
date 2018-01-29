@@ -3,52 +3,118 @@
   <head>
     <title>Set Page Color Popup</title>
     <style type="text/css">
-       html { width:400px; height:600px; }
-       body { height: 580px; }
+       html { width:800px; height:600px; }
+       body { height: 600px; overflow: hidden;}
+       .slider-horizontal {
+        margin-left: 10px !important;
+        width: 100% !important;
+       }
    </style>
 <link rel="stylesheet" type="text/css" href="http://www.vietnamworks.com/css/jobseekers/bootstrap.css?version=5">
 <link rel="stylesheet" type="text/css" href="http://www.vietnamworks.com/css/jobseekers/theme.css?version=5">
+<link rel="stylesheet" type="text/css" href="bootstrap-slider-master/dist/css/bootstrap-slider.min.css">
+<script src="jquery-3.1.1.min.js"></script>
     <script src="popup.js"></script>
+    <script src="bootstrap-slider-master/dist/bootstrap-slider.js"></script>    
   </head>
-<body style="margin-bottom: 0px;">
+<body>
 <div class="row">
-    <div class="box box-lg">
-        <div class="notice padding text-center" id="viewJobsDiv" style="visibility: visible;">
-            <label style="color:red;display:none;" id="notifySaved"> You have already have saved category, change it if you want</label>
-        </div>
+    <div class="box box-lg" style="padding: 60px !important;">
         
         <div class="text-center">
             <h1 class="">Let Your Dream Job Come To You!</h1>
-
-            <p class="lead text-center">As soon as a job matches your job critera below, you will be notified via
-                chrome. </p>
         </div>
-        <div class="form-horizontal push-top-10">
-
-            <div class="form-group">
-                <label> Please choose the category for job alert</label>
-                
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">jobs in (category)<span class="text-danger">*</span></label>
-
-                <div class="col-sm-9">
-                    <select id="cateSelect" class="form-control">
-                      <option value="it-software">IT Software</option>
-                      <option value="accounting">Accounting</option>
-                      <option value="banking">Banking</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-12 text-center">
-                    <button class="btn btn-primary btn-xlg" id="chooseCateBtn">Save</button>
-                </div>
-            </div>
+        <div class="col-sm-3">
+          <img width="169" height="367" src="gaku_png2.png" />
         </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-8" style="margin-left: 10px">
+
+          <div class="row step step1">
+            <div class="form-horizontal push-top-10">
+              <div class="form-group">
+                  <label class="col-sm-12 control-label" style="text-align:left;font-size:24px;font-weight:normal;">What are you looking for ?</label>
+
+                  <div class="col-sm-12">
+                      <input type="text" class="form-control" id="keyInput" />
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row step step2">
+            <div class="form-horizontal push-top-10">
+              <div class="form-group">
+                  <label class="col-sm-12 control-label" style="text-align:left;font-size:24px;font-weight:normal;"> In what Industry are you interested?</label>
+
+                  <div class="col-sm-12">
+                      <select id="cateSelect" class="form-control">
+                        <option value="it-software">IT Software</option>
+                        <option value="accounting">Accounting</option>
+                        <option value="banking">Banking</option>
+                      </select>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row  step step3">
+            <div class="form-horizontal push-top-10">
+              <div class="form-group">
+                  <label class="col-sm-12 control-label" style="text-align:left;font-size:24px;font-weight:normal;"> Where do you want to work?</label>
+
+                  <div class="col-sm-12">
+                    <button class="btn btn-info btn-xlg locationSelect" >Ho Chi Minh</button>
+                    <button class="btn btn-info btn-xlg locationSelect" >Ha noi</button>
+                    <button class="btn btn-info btn-xlg locationSelect" >Other</button>
+                      <input type="text" class="form-control hide" id="locationInput" />
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row  step step4">
+            <div class="form-horizontal push-top-10">
+              <div class="form-group">
+                  <label class="col-sm-12 control-label" style="text-align:left;font-size:24px;font-weight:normal;"> What is your expected salary? </label>
+
+                  <div class="col-sm-12">
+                      <input class="form-control" id="ex13" type="text"/>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row  step step5">
+            <div class="form-horizontal push-top-10">
+              <div class="form-group">
+                  <label class="col-sm-12 control-label" style="text-align:left;font-size:24px;font-weight:normal;">
+                    Looking for <span style="color:red" id="key">key</span> of <span style="color:red" id="category">category</span> in
+                    <br>
+                    <span style="color:red" id="location">location</span> with salary <span style="color:red" id="salary">salary</span> or above
+                  </label>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="col-sm-12" style="margin-bottom:10px;">
+          <div class="row">
+            
+            <div class="col-sm-6 text-right pull-right">
+                <button class="btn btn-primary btn-xlg" id="stepBtn" data-step="1">Next</button>
+                <button class="btn btn-primary btn-xlg" id="chooseCateBtn">Save</button>
+                <button class="btn btn-primary btn-xlg" id="resetBtn">Reset</button>
+            </div>
+            <div class="col-sm-6 text-left pull-left">
+                <label id="noteMess">Step <span id="stepNo">1</span> of 4</label>
+            </div>
+          </div>
+            
+          </div>
     </div>
   </div>
-
 
 </body>
 </html>

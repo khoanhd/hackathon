@@ -3,12 +3,12 @@
 /******************/
 var secret = 'dc9b9efd3e02d2e6e2800fb2b61421f7';
 // Production config
-var domain = 'http://0103a17e.ngrok.io/';
-var io_connect = 'http://8369f9cc.ngrok.io';
+// var domain = 'http://0103a17e.ngrok.io/';
+// var io_connect = 'http://8369f9cc.ngrok.io';
 
 // Development config
-// var domain = 'http://127.0.0.1/';
-// var io_connect = 'http://127.0.0.1:3000';
+var domain = 'http://127.0.0.1/';
+var io_connect = 'http://127.0.0.1:3000';
 
 /**************************************/
 //*Function showPushed or showDefault*//
@@ -32,15 +32,30 @@ function showPushed() {
     if(localStorage.url != null) {
         body = localStorage.message;
     }
-    var notification = new Notification(mess, {
-        icon: '64.png',
-        body: body
+
+    var myNotificationID = null;
+    chrome.notifications.create("", {
+        type:    "basic",
+        iconUrl: "64.png",
+        title:   "REMINDER",
+        message: "It's time to go to this super-cool site !\nProceed ?",
+        contextMessage: "It's about time...",
+        buttons: [{
+            title: "Apply"
+        }]
+    }, function(id) {
+        myNotificationID = id;
     });
-    if(localStorage.url != '') {
-        notification.onclick = function () {
+    chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
+        if (notifId === myNotificationID) {
+            window.open('http://0103a17e.ngrok.io/thankyou.html');
+        }
+    });
+    chrome.notifications.onClicked.addListener(function(notifId, btnIdx) {
+        if (notifId === myNotificationID) {
             window.open(localStorage.url);
-        };
-    }
+        }
+    });
   }
 }
 
@@ -62,20 +77,30 @@ function showDefault() {
                         body = notify_data['message'];
                     }
                     mess = notify_data['title'];
-                    if(notify_data['url'] != '') {
-                        notification.onclick = function () {
-                            window.open(notify_data['url']);
-                        };
-                    }
-                    var notification = new Notification(mess, {
-                        icon: '64.png',
-                        body: body
+
+                    var myNotificationID = null;
+                    chrome.notifications.create("", {
+                        type:    "basic",
+                        iconUrl: "64.png",
+                        title:   "REMINDER",
+                        message: "It's time to go to this super-cool site !\nProceed ?",
+                        contextMessage: "It's about time...",
+                        buttons: [{
+                            title: "Apply"
+                        }]
+                    }, function(id) {
+                        myNotificationID = id;
                     });
-                    if(notify_data['url'] != '') {
-                        notification.onclick = function () {
-                            window.open(notify_data['url']);
-                        };
-                    }
+                    chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
+                        if (notifId === myNotificationID) {
+                            window.open('http://0103a17e.ngrok.io/thankyou.html');
+                        }
+                    });
+                    chrome.notifications.onClicked.addListener(function(notifId, btnIdx) {
+                        if (notifId === myNotificationID) {
+                            window.open(localStorage.url);
+                        }
+                    });
                 });
 
                 localStorage.firstRun = false;
@@ -90,15 +115,29 @@ function showDefault() {
                         body = notify_data['message'];
                     }
 
-                    var notification = new Notification(mess, {
-                        icon: '64.png',
-                        body: body
+                    var myNotificationID = null;
+                    chrome.notifications.create("", {
+                        type:    "basic",
+                        iconUrl: "64.png",
+                        title:   "REMINDER",
+                        message: "It's time to go to this super-cool site !\nProceed ?",
+                        contextMessage: "It's about time...",
+                        buttons: [{
+                            title: "Apply"
+                        }]
+                    }, function(id) {
+                        myNotificationID = id;
                     });
-                    if(notify_data['url'] != '') {
-                        notification.onclick = function () {
-                            window.open(notify_data['url']);
-                        };
-                    }
+                    chrome.notifications.onButtonClicked.addListener(function(notifId, btnIdx) {
+                        if (notifId === myNotificationID) {
+                            window.open('http://0103a17e.ngrok.io/thankyou.html');
+                        }
+                    });
+                    chrome.notifications.onClicked.addListener(function(notifId, btnIdx) {
+                        if (notifId === myNotificationID) {
+                            window.open(localStorage.url);
+                        }
+                    });
                 }
             });
         }
